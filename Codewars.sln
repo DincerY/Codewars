@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codewars.RemovingElements", "Codewars.RemovingElements\Codewars.RemovingElements.csproj", "{332D7CB7-A819-470A-A2E1-E26BB461EEB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codewars.Factorial", "Codewars.Factorial\Codewars.Factorial.csproj", "{77793F00-E356-4B96-A963-47575E259B0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{332D7CB7-A819-470A-A2E1-E26BB461EEB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{332D7CB7-A819-470A-A2E1-E26BB461EEB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{332D7CB7-A819-470A-A2E1-E26BB461EEB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77793F00-E356-4B96-A963-47575E259B0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77793F00-E356-4B96-A963-47575E259B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77793F00-E356-4B96-A963-47575E259B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77793F00-E356-4B96-A963-47575E259B0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

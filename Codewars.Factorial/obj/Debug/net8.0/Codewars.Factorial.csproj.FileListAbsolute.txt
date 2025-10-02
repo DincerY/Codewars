@@ -1,0 +1,15 @@
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\bin\Debug\net8.0\Codewars.Factorial.exe
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\bin\Debug\net8.0\Codewars.Factorial.deps.json
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\bin\Debug\net8.0\Codewars.Factorial.runtimeconfig.json
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\bin\Debug\net8.0\Codewars.Factorial.dll
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\bin\Debug\net8.0\Codewars.Factorial.pdb
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\obj\Debug\net8.0\Codewars.Factorial.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\obj\Debug\net8.0\Codewars.Factorial.AssemblyInfoInputs.cache
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\obj\Debug\net8.0\Codewars.Factorial.AssemblyInfo.cs
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\obj\Debug\net8.0\Codewars.Factorial.csproj.CoreCompileInputs.cache
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\obj\Debug\net8.0\Codewars.Factorial.sourcelink.json
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\obj\Debug\net8.0\Codewars.Factorial.dll
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\obj\Debug\net8.0\refint\Codewars.Factorial.dll
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\obj\Debug\net8.0\Codewars.Factorial.pdb
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\obj\Debug\net8.0\Codewars.Factorial.genruntimeconfig.cache
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.Factorial\obj\Debug\net8.0\ref\Codewars.Factorial.dll
