@@ -1,0 +1,15 @@
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\bin\Debug\net8.0\Codewars.IPValidation.exe
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\bin\Debug\net8.0\Codewars.IPValidation.deps.json
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\bin\Debug\net8.0\Codewars.IPValidation.runtimeconfig.json
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\bin\Debug\net8.0\Codewars.IPValidation.dll
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\bin\Debug\net8.0\Codewars.IPValidation.pdb
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\obj\Debug\net8.0\Codewars.IPValidation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\obj\Debug\net8.0\Codewars.IPValidation.AssemblyInfoInputs.cache
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\obj\Debug\net8.0\Codewars.IPValidation.AssemblyInfo.cs
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\obj\Debug\net8.0\Codewars.IPValidation.csproj.CoreCompileInputs.cache
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\obj\Debug\net8.0\Codewars.IPValidation.sourcelink.json
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\obj\Debug\net8.0\Codewars.IPValidation.dll
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\obj\Debug\net8.0\refint\Codewars.IPValidation.dll
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\obj\Debug\net8.0\Codewars.IPValidation.pdb
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\obj\Debug\net8.0\Codewars.IPValidation.genruntimeconfig.cache
+C:\Users\dince\OneDrive\Masaüstü\Codewars\Codewars.IPValidation\obj\Debug\net8.0\ref\Codewars.IPValidation.dll

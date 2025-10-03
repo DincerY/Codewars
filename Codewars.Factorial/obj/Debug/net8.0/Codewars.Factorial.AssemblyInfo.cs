@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Codewars.Factorial")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4796dfcdc8be1ec1328d00e0ee034ea796423f6d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17ffeb77e4b86e9ec04ab000fa58b353f799e9ae")]
 [assembly: System.Reflection.AssemblyProductAttribute("Codewars.Factorial")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Codewars.Factorial")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

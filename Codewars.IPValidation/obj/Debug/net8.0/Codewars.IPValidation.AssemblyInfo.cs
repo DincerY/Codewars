@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("Codewars.RemovingElements")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Codewars.IPValidation")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+17ffeb77e4b86e9ec04ab000fa58b353f799e9ae")]
-[assembly: System.Reflection.AssemblyProductAttribute("Codewars.RemovingElements")]
-[assembly: System.Reflection.AssemblyTitleAttribute("Codewars.RemovingElements")]
+[assembly: System.Reflection.AssemblyProductAttribute("Codewars.IPValidation")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Codewars.IPValidation")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // MSBuild WriteCodeFragment sınıfı tarafından oluşturuldu.
