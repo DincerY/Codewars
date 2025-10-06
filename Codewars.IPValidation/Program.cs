@@ -1,4 +1,5 @@
-﻿using Solution;
+﻿using System.Text.RegularExpressions;
+using Solution;
 Kata.IsValidIp("12.34.56 .1");
 Kata.IsValidIp("12.034.056.0");
 Kata.IsValidIp("0.0.0.0");
@@ -47,6 +48,11 @@ namespace Solution
                 }
             }
             return true;
+        }
+        
+        public static bool IsValidIp2(string ipAddres)
+        {
+            return new Regex("^((2[0-5][0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9]|0)\\.){3}(2[0-5][0-5]|1[0-9][0-9]|[1-9][0-9]|[1-9]|0)$").IsMatch(ipAddres);
         }
     }
 }
