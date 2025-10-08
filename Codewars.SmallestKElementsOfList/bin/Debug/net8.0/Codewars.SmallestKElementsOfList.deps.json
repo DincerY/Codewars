@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "Codewars.SmallestKElementsOfList/1.0.0": {
+        "runtime": {
+          "Codewars.SmallestKElementsOfList.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Codewars.SmallestKElementsOfList/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

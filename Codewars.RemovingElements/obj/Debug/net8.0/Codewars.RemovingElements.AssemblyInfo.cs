@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Codewars.RemovingElements")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4c011a57a151fdce46f168788fd0e34a97901ed1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a74210c9d63c5d9014097835cbedabb2e275cc7e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Codewars.RemovingElements")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Codewars.RemovingElements")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
