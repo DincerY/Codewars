@@ -1,5 +1,5 @@
 ﻿SmallestK.SmallestKInList<long>([1, 2, 3], 0);
-SmallestK.SmallestKInList<long>([1, 2, 3], 1);
+SmallestK.SmallestKInList<long>([1, -2, 3], 1);
 SmallestK.SmallestKInList<long>([1, 2, 3], 2);
 SmallestK.SmallestKInList<long>([1, 2, 3], 3);
 
@@ -15,20 +15,16 @@ class SmallestK
     public static T[] SmallestKInList<T>(T[] arr, int k) where T : IComparable<T>
     {
         if (k <= 0)
-        {
             return new T[]{};
-        }
 
         if (k >= arr.Length)
-        {
             return arr;
-        }
 
         int left = 0;
         int right = arr.Length - 1;
         while (true)
         {
-            int pivotIndex = Partition();
+            int pivotIndex = Partition(arr, left, right);
             if (pivotIndex == k)
             {
                 break;
@@ -42,10 +38,8 @@ class SmallestK
                 right = pivotIndex - 1;
             }
         }
-        Array.Sort(arr);
-        T[] result = new T[k];
-        Array.Copy(arr, result, k);
-        return result;
+
+        return arr.Take(k).ToArray();
     }
 
     private static int Partition<T>(T[] arr, int left, int right)
@@ -58,7 +52,9 @@ class SmallestK
 
         for (int i = left; i < right; i++)
         {
-            if (arr[i] < pivot)
+            var a = long.Parse(arr[i].ToString());
+            var b = long.Parse(pivot.ToString());
+            if (a < b)
             {
                 (arr[storeIndex], arr[i]) = (arr[i], arr[storeIndex]);
                 storeIndex++;
@@ -66,5 +62,39 @@ class SmallestK
         }
         (arr[storeIndex], arr[right]) = (arr[right], arr[storeIndex]);
         return storeIndex;
+    }
+}
+
+public class Kata
+{
+    public static T[] SmallestKElements<T>(T[] arr, int k) where T : IComparable<T>
+    {
+        if (k <= 0)
+        {
+            return new T[]{};
+        }
+        
+        var maxHeap = new PriorityQueue<T, long>();
+
+        foreach (var num in arr)
+        {
+            var tempNum = long.Parse(num.ToString());
+            if (maxHeap.Count < k)
+            {
+                maxHeap.Enqueue(num, -tempNum); 
+            }
+            else
+            {
+                long largestOfK = long.Parse(maxHeap.Peek().ToString()); 
+                
+                if (tempNum < largestOfK)
+                {
+                    maxHeap.Dequeue();
+                    
+                    maxHeap.Enqueue(num, -tempNum);
+                }
+            }
+        }
+        return maxHeap.UnorderedItems.Select(item => item.Element).ToArray();
     }
 }
