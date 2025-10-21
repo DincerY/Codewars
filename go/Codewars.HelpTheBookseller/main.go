@@ -34,7 +34,7 @@ func StockList(listArt []string, listCat []string) string {
 		if cat != listCat[0] {
 			builder.WriteString(" - ")
 		}
-		builder.WriteString(fmt.Sprintf("(%c : %d)", cat[0],resMap[cat[0]]))
+		builder.WriteString(fmt.Sprintf("(%c : %d)", cat[0],resMap[cat]))
 	}
 	return builder.String()
 
