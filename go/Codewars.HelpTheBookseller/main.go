@@ -16,32 +16,22 @@ func main() {
 }
 
 func StockList(listArt []string, listCat []string) string {
-	resMap := make(map[string]int)
-	for _, cat := range listCat {
-		resMap[cat] = 0
+	if len(listArt) == 0 || len(listCat) == 0{
+		return ""
 	}
+	resMap := make(map[string]int)
 
 	for _, art := range listArt {
-		if _, ok := resMap[art]; ok {
-			value := strings.Split(art, " ")[1]
-			i, _ := strconv.Atoi(value)
-			resMap[art]+=i
-		}
+		splitted := strings.Split(art, " ")
+		firstChar := string(splitted[0][0])
+		i, _ := strconv.Atoi(splitted[1])
+		resMap[firstChar]+=i
+		
 	}
-	var builder strings.Builder
 
-	for _,cat := range listCat{
-		if cat != listCat[0] {
-			builder.WriteString(" - ")
-		}
-		builder.WriteString(fmt.Sprintf("(%c : %d)", cat[0],resMap[cat]))
-	}
-	return builder.String()
-
-	//Different Approach
-	/*result := make([]string, len(listCat))
+	result := make([]string, len(listCat))
 	for i, code := range listCat{
 		result[i] = fmt.Sprintf("%s : %v", code, resMap[code])
 	}
-	return strings.Join(result, " - ")*/
+	return strings.Join(result, " - ")
 }
