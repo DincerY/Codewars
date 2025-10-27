@@ -1,23 +1,53 @@
 package main
 
+import "math"
+
 func main() {
 	SquareSumsRow(10)
 }
 
 func SquareSumsRow(n int) []int {
-	var square []int = []int{4, 9, 16, 25, 36, 49, 64, 81, 100}
-	var test = [][]int{}
-
-	for i := 0; i <= n; i++ {
-		test = append(test, []int{})
+	res := make([]int, 0, n)
+	usedMap := make(map[int]struct{})
+	if DFS(&res,usedMap,n) {
+		return res
 	}
+	return nil;
+}
+
+func isPerfectSquare(num int) bool {
+	if num < 0 {
+		return false
+	}
+	sqrt := int(math.Sqrt(float64(num)))
+	return sqrt*sqrt == num
+}
+
+func DFS(r *[]int, used map[int]struct{}, n int) bool {
+	if len(used) == n {
+		return true
+	}
+
 	for i := 1; i <= n; i++ {
-		for _, val := range square {
-			if val-i <= n {
-				test[i] = append(test[i], 1)
+		if _, exists := used[i]; exists {
+			continue
+		}
+		if len(*r) > 0 {
+			lastElement := (*r)[len(*r)-1]
+			if !isPerfectSquare(lastElement + i) {
+				continue 
 			}
 		}
-	}
 
-	return nil
+		used[i] = struct{}{}
+		*r = append(*r, i)  
+
+		if DFS(r, used, n) {
+			return true
+		}
+
+		delete(used, i)      
+		*r = (*r)[:len(*r)-1] 
+	}
+	return false
 }
