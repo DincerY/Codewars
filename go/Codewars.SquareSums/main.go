@@ -21,20 +21,30 @@ func isSquare(val int) bool {
 	return false
 }
 
-func dfs(step int){
-	for i := 0; i < n; i++ {
+func dfs(step, n int){
+	if step == n+1 {
+		found = true
+		return
+	}
+	for i := 1; i <= n; i++ {
 		if step == 1 || !used[i] && isSquare(res[len(res)-1] + i){
 			res, used[i] = append(res, i), true
-			dfs()
+			dfs(step+1,n)
+			if found {
+				return
+			}
+			res, used[i] = res[:len(res)-1], false
 		}
 	}
 }
 
 func SquareSumsRow(n int) []int{
+	found = false
 	used = make([]bool, n+1)
 	res = make([]int, 0)
-	
-
-
-	return nil
+	dfs(1, n)
+	if len(res) != n {
+		return nil
+	}
+	return res
 }
