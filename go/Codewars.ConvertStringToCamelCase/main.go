@@ -34,3 +34,21 @@ func ToCamelCase(s string) string {
 	}
 	return strings.Join(arr, "")
 }
+
+func ToCamelCase2(s string) string{
+
+	var result []rune
+	var next bool
+	for _,r := range s{
+		if r == '-' || r == '_' {
+			next = true;
+			continue
+		}
+		if next {
+			r = unicode.ToUpper(r)
+			next = false
+		}
+		result = append(result, r)
+	}
+	return string(result)
+}
