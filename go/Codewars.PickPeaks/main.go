@@ -19,25 +19,30 @@ type IsPeak struct {
 }
 
 func PickPeaks(array []int) PosPeaks {
-	//It is working but if we have consecutive peaks it will not working
 	res := map[int]*IsPeak{}
 
+	var index int
 	for i := 1; i < len(array)-1; i++ {
+		if array[i] != array[i-1] {
+			index = i
+		}
 		res[i] = &IsPeak{
 			Val: array[i],
 		}
 		if array[i] > array[i-1] {
-			res[i].Left = true
+			res[index].Left = true
 		}
 		if array[i] > array[i+1] {
-			res[i].Right = true
+			res[index].Right = true
 		}
+
 	}
 	pos := PosPeaks{}
-	for a, b := range res {
-		if b.Left && b.Right {
-			pos.Pos = append(pos.Pos, a)
-			pos.Peaks = append(pos.Peaks, b.Val)
+
+	for i := 1; i < len(array)-1; i++ {
+		if res[i].Left && res[i].Right {
+			pos.Pos = append(pos.Pos, i)
+			pos.Peaks = append(pos.Peaks, res[i].Val)
 		}
 	}
 	return pos
