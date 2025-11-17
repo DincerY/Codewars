@@ -2,7 +2,7 @@ package main
 
 func main() {
 	PickPeaks([]int{3, 2, 3, 6, 4, 1, 2, 3, 2, 1, 2, 3})
-	PickPeaks([]int{3, 2, 3, 6, 4, 1, 2, 3, 2, 1, 2, 2, 2, 1})
+	PickPeaks2([]int{3, 2, 3, 6, 4, 1, 2, 3, 2, 1, 2, 2, 2, 1})
 	PickPeaks([]int{2, 1, 3, 1, 2, 2, 2, 2, 1})
 
 }
@@ -46,4 +46,20 @@ func PickPeaks(array []int) PosPeaks {
 		}
 	}
 	return pos
+}
+
+func PickPeaks2(array []int) PosPeaks {
+
+	res := PosPeaks{}
+	var index int
+	for i := 1; i < len(array)-1; i++ {
+		if array[i] != array[i-1] {
+			index = i
+		}
+		if array[i] > array[i+1] && array[index] > array[index-1] {
+			res.Pos = append(res.Pos, index)
+			res.Peaks = append(res.Peaks, array[index])
+		}
+	}
+	return res
 }
