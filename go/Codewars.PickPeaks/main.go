@@ -56,7 +56,7 @@ func PickPeaks2(array []int) PosPeaks {
 		if array[i] != array[i-1] {
 			index = i
 		}
-		if array[i] > array[i+1] && array[index] > array[index-1] {
+		if array[i] > array[i+1] && array[index] > array[index-1] && index > 0 {
 			res.Pos = append(res.Pos, index)
 			res.Peaks = append(res.Peaks, array[index])
 		}
