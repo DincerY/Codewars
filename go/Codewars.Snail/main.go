@@ -11,39 +11,31 @@ func main() {
 }
 
 func Snail(snaipMap [][]int) []int {
-	if len(snaipMap) == 0 {
-		return nil
-	}
+	var res []int
 	row := len(snaipMap)
 	column := len(snaipMap[0])
-
-	var res []int
-	Recursive(0, 0, row-1, column-1, &res, snaipMap)
-
-	return res
-}
-
-// helper func
-func contains(arr []int, val int) bool {
-	for _, v := range arr {
-		if v == val {
-			return true
+	right := 0
+	bottom := right + 1
+	left := column - 1
+	top := row - 1
+	for true {
+		for right < column {
+			res = append(res, snaipMap[top][right])
+			right++
 		}
-	}
-	return false
-}
+		for bottom < row {
+			res = append(res, snaipMap[bottom][right-1])
+			bottom++
+		}
+		for left >= 0 {
+			res = append(res, snaipMap[bottom-1][left])
+			left--
+		}
+		for top >= 0 {
+			res = append(res, snaipMap[top][left+1])
+			top--
+		}
 
-func Recursive(x, y, row, col int, res *[]int, snailMap [][]int) {
-
-	if x > row || x < 0 || y > col || y < 0 || contains(*res, snailMap[x][y]) {
-		return
-	} else {
-		*res = append(*res, snailMap[x][y])
 	}
-	if x-1 < 0 || contains(*res, snailMap[x-1][y]) {
-		Recursive(x, y+1, row, col, res, snailMap) // right
-	}
-	Recursive(x+1, y, row, col, res, snailMap) // down
-	Recursive(x, y-1, row, col, res, snailMap) // left
-	Recursive(x-1, y, row, col, res, snailMap) // up
+	return res
 }
