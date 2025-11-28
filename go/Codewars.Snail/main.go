@@ -14,28 +14,27 @@ func Snail(snaipMap [][]int) []int {
 	var res []int
 	row := len(snaipMap)
 	column := len(snaipMap[0])
-	right := 0
-	bottom := right + 1
-	left := column - 1
-	top := row - 1
-	for true {
-		for right < column {
-			res = append(res, snaipMap[top][right])
-			right++
+	left := 0
+	top := 0
+	right := row
+	bottom := column
+	for left != top && right != bottom {
+		for i := left; i < right; i++ {
+			res = append(res, snaipMap[top][i])
 		}
-		for bottom < row {
-			res = append(res, snaipMap[bottom][right-1])
-			bottom++
+		top++
+		for i := top; i < right; i++ {
+			res = append(res, snaipMap[i][right-1])
 		}
-		for left >= 0 {
-			res = append(res, snaipMap[bottom-1][left])
-			left--
+		right--
+		for i := right - 1; i >= left; i-- {
+			res = append(res, snaipMap[bottom-1][i])
 		}
-		for top >= 0 {
-			res = append(res, snaipMap[top][left+1])
-			top--
+		bottom--
+		for i := bottom - 1; i >= top; i-- {
+			res = append(res, snaipMap[i][left])
 		}
-
+		left++
 	}
 	return res
 }
