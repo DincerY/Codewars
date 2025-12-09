@@ -8,19 +8,19 @@ func main() {
 	BalancedParens(4)
 }
 
-var result []string
-
 func BalancedParens(n int) []string {
 	if n == 0 {
 		return []string{""}
 	}
-	Recursive("", n, n, n*2)
+	var result []string
+
+	Recursive("", n, n, &result)
 	return result
 }
 
-func isValid(res string) bool {
+func isValid(str string) bool {
 	var stack []rune
-	for _, chr := range res {
+	for _, chr := range str {
 		if chr == ')' {
 			if len(stack) == 0 {
 				return false
@@ -34,16 +34,16 @@ func isValid(res string) bool {
 	return len(stack) == 0
 }
 
-func Recursive(res string, left int, right int, resLen int) {
+func Recursive(res string, left int, right int, result *[]string) {
 	if left > 0 {
-		Recursive(res+"(", left-1, right, resLen)
+		Recursive(res+"(", left-1, right, result)
 	}
 	if right > 0 {
-		Recursive(res+")", left, right-1, resLen)
+		Recursive(res+")", left, right-1, result)
 	}
 	if left == 0 && right == 0 {
-		if len(res) == resLen && isValid(res) {
-			result = append(result, res)
+		if isValid(res) {
+			*result = append(*result, res)
 		}
 	}
 }
