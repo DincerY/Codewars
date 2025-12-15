@@ -9,28 +9,26 @@ func main() {
 	ChooseBestSum(163, 3, ts)
 }
 
-var result int = 0
-
 func ChooseBestSum(t, k int, ls []int) int {
-	result = 0
-	Recursion(0, ls, k, 0, t)
+	var result = 0
+	Recursion(0, ls, k, 0, t, &result)
 	if result == 0 {
 		return -1
 	}
 	return result
 }
 
-func Recursion(start int, array []int, town int, sum int, expect int) {
-	if result == expect {
+func Recursion(start int, array []int, town int, sum int, expect int, result *int) {
+	if *result == expect {
 		return
 	}
 	if town == 0 {
 		if sum <= expect {
-			result = int(math.Max(float64(result), float64(sum)))
+			*result = int(math.Max(float64(*result), float64(sum)))
 		}
 		return
 	}
 	for i := start; i < len(array); i++ {
-		Recursion(i+1, array, town-1, sum+array[i], expect)
+		Recursion(i+1, array, town-1, sum+array[i], expect, result)
 	}
 }
