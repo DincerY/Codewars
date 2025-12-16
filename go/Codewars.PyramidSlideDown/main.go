@@ -3,7 +3,7 @@ package main
 import "math"
 
 func main() {
-	LongestSlideDown([][]int{{3}, {7, 4}, {2, 4, 6}, {8, 5, 9, 3}})
+	LongestSlideDown2([][]int{{3}, {7, 4}, {2, 4, 6}, {8, 5, 9, 3}})
 	LongestSlideDown([][]int{{10}, {10, 20}, {10, 10, 20}, {10, 90, 10, 20}})
 	LongestSlideDown([][]int{{75}, {95, 64}, {17, 47, 82}, {18, 35, 87, 10},
 		{20, 4, 82, 47, 65}, {19, 1, 23, 75, 3, 34},
@@ -22,7 +22,7 @@ var max int = 0
 func LongestSlideDown(pyramid [][]int) int {
 	max = 0
 	Recursion(pyramid, 0, 0, 0)
-	return max // your code here
+	return max
 }
 
 func Recursion(pyramid [][]int, row, col int, result int) {
@@ -33,4 +33,14 @@ func Recursion(pyramid [][]int, row, col int, result int) {
 	result += pyramid[row][col]
 	Recursion(pyramid, row+1, col, result)
 	Recursion(pyramid, row+1, col+1, result)
+}
+
+//Different approach
+func LongestSlideDown2(pyramid [][]int) int {
+	for i := len(pyramid) - 2; i >= 0; i-- {
+		for j := 0; j < len(pyramid[i]); j++ {
+			pyramid[i][j] += int(math.Max(float64(pyramid[i+1][j]), float64(pyramid[i+1][j+1])))
+		}
+	}
+	return pyramid[0][0]
 }
