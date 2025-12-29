@@ -30,7 +30,6 @@ func Recursion(str string, temp string, lenght int) {
 	}
 	for i := 0; i < len(str); i++ {
 		Recursion(str[:i]+str[i+1:], temp+string(str[i]), lenght)
-		Recursion(str[:i]+str[i+1:], temp, lenght)
 	}
 }
 
@@ -40,7 +39,7 @@ func Permutations2(s string) (a []string) {
 		return []string{s}
 	}
 	m := map[string]bool{}
-	for _, sub := range Permutations(s[1:]) {
+	for _, sub := range Permutations2(s[1:]) {
 		for i := 0; i <= len(sub); i++ {
 			st := sub[0:i] + s[0:1] + sub[i:]
 			if m[st] {
