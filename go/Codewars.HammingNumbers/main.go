@@ -1,6 +1,7 @@
 package main
 
 func main() {
+	Hammer(10)
 	Hammer(1)
 	Hammer(2)
 	Hammer(3)
@@ -10,7 +11,6 @@ func main() {
 	Hammer(7)
 	Hammer(8)
 	Hammer(9)
-	Hammer(10)
 	Hammer(11)
 	Hammer(12)
 	Hammer(13)
@@ -19,6 +19,18 @@ func main() {
 }
 
 func Hammer(n int) uint {
-	// your code here
-	return 1
+	valueTable := []uint{1}
+
+	power := []uint{2, 3, 5}
+	res := map[uint]struct{}{}
+	for len(res) != n {
+		value := valueTable[0]
+		res[value] = struct{}{}
+		for _, p := range power {
+			valueTable = append(valueTable, value*p)
+		}
+		valueTable = valueTable[1:]
+	}
+	//for res
+	return 0
 }
