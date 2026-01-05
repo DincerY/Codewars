@@ -18,19 +18,35 @@ func main() {
 	Hammer(15)
 }
 
+func helper(values []uint) (uint, int) {
+	min := values[0]
+	index := 0
+	for i := 1; i < len(values); i++ {
+		if values[i] < min {
+			min = values[i]
+			index = i
+		}
+	}
+	return min, index
+}
+
 func Hammer(n int) uint {
 	valueTable := []uint{1}
 
 	power := []uint{2, 3, 5}
 	res := map[uint]struct{}{}
 	for len(res) != n {
-		value := valueTable[0]
+		value, index := helper(valueTable)
 		res[value] = struct{}{}
 		for _, p := range power {
 			valueTable = append(valueTable, value*p)
 		}
-		valueTable = valueTable[1:]
+		valueTable = valueTable[:index]
 	}
-	//for res
-	return 0
+	result := []uint{}
+	for k := range res {
+		result = append(result, k)
+	}
+
+	return result[len(result)-1]
 }
