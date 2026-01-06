@@ -49,5 +49,5 @@ func Hammer(n int) uint {
 			max = k
 		}
 	}
-	return result[len(result)-1]
+	return max
 }
