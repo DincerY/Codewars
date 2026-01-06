@@ -41,12 +41,13 @@ func Hammer(n int) uint {
 		for _, p := range power {
 			valueTable = append(valueTable, value*p)
 		}
-		valueTable = valueTable[:index]
+		valueTable = append(valueTable[:index], valueTable[index+1:]...)
 	}
-	result := []uint{}
+	var max uint = 0
 	for k := range res {
-		result = append(result, k)
+		if k > max {
+			max = k
+		}
 	}
-
 	return result[len(result)-1]
 }
