@@ -51,3 +51,28 @@ func Hammer(n int) uint {
 	}
 	return max
 }
+
+// It is not mine solution, but it is better
+func Hammer2(n int) uint {
+	h := make([]uint, n)
+	h[0] = 1
+	next2, next3, next5 := uint(2), uint(3), uint(5)
+
+	i, j, k := 0, 0, 0
+	for m := 1; m < len(h); m++ {
+		h[m] = min(next2, min(next3, next5))
+		if h[m] == next2 {
+			i++
+			next2 = h[i] * 2
+		}
+		if h[m] == next3 {
+			j++
+			next3 = h[j] * 3
+		}
+		if h[m] == next5 {
+			k++
+			next5 = h[k] * 5
+		}
+	}
+	return h[n-1]
+}
