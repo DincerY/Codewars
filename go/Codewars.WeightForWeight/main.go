@@ -26,16 +26,13 @@ var dic map[int][]string = make(map[int][]string)
 
 func OrderWeight(strng string) string {
 	var res string
-	values := strings.Split(strng, " ")
-	//len := len(values)
+	values := strings.Fields(strng)
 
-	//while append is being done, I should sort array
 	for _, value := range values {
 		dic[sumDigs(value)] = append(dic[sumDigs(value)], value)
-		print(value, sumDigs(value))
 	}
 
-	for i := 0; i < len(dic); i++ {
+	for len(dic) > 0 {
 		minKey := 21000000
 		for key := range dic {
 			if key < minKey {
@@ -44,20 +41,25 @@ func OrderWeight(strng string) string {
 		}
 		values := dic[minKey]
 		if len(values) > 1 {
-			for i := 0; i < len(values); i++ {
-				minStr := values[i]
-				for _, str := range values {
-					if str[0] < minStr[0] {
+			for len(values) > 0 {
+				minStr := "99999999999"
+				minIndex := 0
+				for index, str := range values {
+					if str < minStr {
 						minStr = str
+						minIndex = index
 					}
 				}
-				values = values[1:len(values)]
-				res += minStr
+				values = append(values[:minIndex], values[minIndex+1:]...)
+				res += " " + minStr
 			}
 		} else {
-			res += values[0]
+			res += " " + values[0]
 		}
 		delete(dic, minKey)
 	}
-	return res
+	if len(res) == 0 {
+		return res
+	}
+	return res[1:]
 }
