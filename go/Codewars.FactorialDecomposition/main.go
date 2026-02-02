@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	Decomp(22)
 
@@ -23,13 +25,17 @@ func Decomp(n int) string {
 	for i := 2; i <= n; i++ {
 		arr = append(arr, i)
 	}
-	//powerCount := 0
-	value := arr[0]
+
 	resMap := map[int]int{}
 
 	for len(arr) > 0 {
-		for arr[0] == 1 {
+
+		for len(arr) > 0 && arr[0] == 1 {
 			arr = arr[1:]
+		}
+
+		if len(arr) <= 0 {
+			break
 		}
 
 		prime := arr[0]
@@ -42,7 +48,20 @@ func Decomp(n int) string {
 			arr[i] = remainder
 		}
 	}
-
-	res += string(value)
-	return ""
+	for i := 2; i <= n; i++ {
+		if len(resMap) <= 0 {
+			break
+		}
+		value := resMap[i]
+		if value == 0 {
+			continue
+		}
+		if value == 1 {
+			res += fmt.Sprintf("%d", i)
+		} else {
+			res += fmt.Sprintf("%d^%d", i, value)
+		}
+		res += " * "
+	}
+	return res
 }
