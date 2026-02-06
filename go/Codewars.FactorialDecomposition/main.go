@@ -26,9 +26,8 @@ func Decomp(n int) string {
 		arr = append(arr, i)
 	}
 
-	resMap := map[int]int{}
-
 	for len(arr) > 0 {
+		value := 0
 
 		for len(arr) > 0 && arr[0] == 1 {
 			arr = arr[1:]
@@ -44,24 +43,16 @@ func Decomp(n int) string {
 				continue
 			}
 			power, remainder := helper(arr[i], prime)
-			resMap[prime] += power
+			value += power
 			arr[i] = remainder
 		}
-	}
-	for i := 2; i <= n; i++ {
-		if len(resMap) <= 0 {
-			break
-		}
-		value := resMap[i]
-		if value == 0 {
-			continue
-		}
 		if value == 1 {
-			res += fmt.Sprintf("%d", i)
+			res += fmt.Sprintf("%d", prime)
 		} else {
-			res += fmt.Sprintf("%d^%d", i, value)
+			res += fmt.Sprintf("%d^%d", prime, value)
 		}
 		res += " * "
 	}
-	return res
+
+	return res[:len(res)-3]
 }
