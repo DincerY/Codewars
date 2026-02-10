@@ -10,33 +10,24 @@ func main() {
 }
 
 func CreateSpiral(n int) [][]int {
-
-	var left, right, top, bottom int
-	left = 0
-	right = n
-	top = 0
-	bottom = n
-
-	//test matrix
-	res := [][]int{}
-	/*subRes := &res[0]
-	*subRes = append(*subRes, 1)
-	res = append(res, []int{1, 2, 3, 4, 5, 6})*/
-
-	for i := 0; i < n; i++ {
-		res = append(res, []int{})
-		for j := 0; j < n; j++ {
-			res[i] = append(res[i], 0)
-		}
+	if n < 1 {
+		return [][]int{}
 	}
-	// your code here
 
-	for left != right && top != bottom {
-		lastAddedValue := 1
+	left, top := 0, 0
+	right, bottom := n, n
+
+	res := make([][]int, n)
+	for i := range res {
+		res[i] = make([]int, n)
+	}
+
+	lastAddedValue := 1
+
+	for left < right && top < bottom {
 		for i := left; i < right; i++ {
 			res[top][i] = lastAddedValue
 			lastAddedValue++
-
 		}
 		top++
 
