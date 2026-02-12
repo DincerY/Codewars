@@ -1,17 +1,39 @@
 package main
 
 func main() {
-	Bananas("banana")
 	Bananas("bbananana")
+	Bananas("banana")
 	Bananas("bananaaa")
 }
 
-func Bananas(s string) []string {
+var allRecRes = []string{}
 
-	return []string{}
+func Bananas(s string) []string {
+	banana := "banana"
+	res := []string{}
+	Recursion(s, 0)
+	for _, str := range allRecRes {
+		index := 0
+		for _, rn := range str {
+			if byte(rn) == banana[index] {
+				index++
+			}
+			if index == len(banana) {
+				res = append(res, str)
+				break
+			}
+		}
+
+	}
+
+	return res
 }
 
 func Recursion(s string, index int) {
+	if index >= len(s) {
+		allRecRes = append(allRecRes, s)
+		return
+	}
 	prevS := s
 	r := []rune(s)
 	r[index] = '-'
