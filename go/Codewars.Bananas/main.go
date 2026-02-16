@@ -14,16 +14,22 @@ func Bananas(s string) []string {
 	Recursion(s, 0)
 	for _, str := range allRecRes {
 		index := 0
-		for _, rn := range str {
+		for i, rn := range str {
+			if rn == '-' {
+				continue
+			}
 			if byte(rn) == banana[index] {
 				index++
+			} else {
+				break
 			}
 			if index == len(banana) {
-				res = append(res, str)
+				if i == len(str)-1 {
+					res = append(res, str)
+				}
 				break
 			}
 		}
-
 	}
 
 	return res
