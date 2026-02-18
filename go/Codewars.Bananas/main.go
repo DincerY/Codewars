@@ -6,29 +6,37 @@ func main() {
 	Bananas("bananaaa")
 }
 
-var allRecRes = []string{}
+var allRecRes []string
 
 func Bananas(s string) []string {
+	allRecRes = []string{}
 	banana := "banana"
 	res := []string{}
 	Recursion(s, 0)
-	for _, str := range allRecRes {
+	for test, str := range allRecRes {
+		if test == 252 {
+			print("")
+		}
 		index := 0
-		for i, rn := range str {
+		indexForRn := -1
+		for _, rn := range str {
 			if rn == '-' {
+				indexForRn++
 				continue
 			}
+			if index >= len(banana) {
+				break
+			}
 			if byte(rn) == banana[index] {
+				indexForRn++
 				index++
 			} else {
 				break
 			}
-			if index == len(banana) {
-				if i == len(str)-1 {
-					res = append(res, str)
-				}
-				break
-			}
+
+		}
+		if index == len(banana) && indexForRn == len(str)-1 {
+			res = append(res, str)
 		}
 	}
 
