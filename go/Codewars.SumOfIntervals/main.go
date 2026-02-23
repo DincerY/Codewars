@@ -1,6 +1,7 @@
 package main
 
 func main() {
+	SumOfIntervals([][2]int{{1, 5}, {10, 20}, {1, 6}, {16, 19}, {5, 11}})
 	SumOfIntervals([][2]int{{1, 4}, {7, 10}, {3, 5}})
 
 	SumOfIntervals([][2]int{{1, 5}})
@@ -12,7 +13,7 @@ func main() {
 func helper(intervals [][2]int, interval [2]int) []int {
 	res := []int{}
 	for index, inter := range intervals {
-		if interval[0] < inter[0] && interval[1] > inter[0] {
+		if inter[0] < interval[0] && interval[0] < inter[1] && interval[1] > inter[1] {
 			res = append(res, index)
 		}
 	}
@@ -32,12 +33,19 @@ func helper(intervals [][2]int, interval [2]int) []int {
 func SumOfIntervals(intervals [][2]int) int {
 	res := 0
 
-	for _, inter := range intervals {
-		test := helper(intervals, inter)
-		print(test)
+	for intervalsIndex, inter := range intervals {
+		index := helper(intervals, inter)
+		for _, i := range index {
+			intervals[i][1] = inter[1]
+			intervals = append(intervals[:intervalsIndex], intervals[intervalsIndex+1:]...)
+		}
 
 	}
 
+	for _, inter := range intervals {
+		res += inter[1] - inter[0]
+
+	}
 	return res
 }
 
