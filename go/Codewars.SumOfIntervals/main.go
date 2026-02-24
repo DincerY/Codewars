@@ -10,56 +10,27 @@ func main() {
 
 }
 
-func helper(intervals [][2]int, interval [2]int) []int {
-	res := []int{}
-	for index, inter := range intervals {
-		if inter[0] < interval[0] && interval[0] < inter[1] && interval[1] > inter[1] {
-			res = append(res, index)
-		}
-	}
-	return res
-}
-
-// func helper(intervals [][2]int, val int) []int {
-// 	res := []int{}
-// 	for index, inter := range intervals {
-// 		if inter[0] < val && inter[1] > val {
-// 			res = append(res, index)
-// 		}
-// 	}
-// 	return res
-// }
-
 func SumOfIntervals(intervals [][2]int) int {
 	res := 0
-
-	for intervalsIndex, inter := range intervals {
-		index := helper(intervals, inter)
-		for _, i := range index {
-			intervals[i][1] = inter[1]
-			intervals = append(intervals[:intervalsIndex], intervals[intervalsIndex+1:]...)
+	list := [][2]int{}
+	for _, interval := range intervals {
+		if len(list) == 0 {
+			list = append(list, interval)
+			continue
 		}
-
+		for _, item := range list {
+			//0. elems must be updated
+			if interval[0] < item[0] {
+				item[0] = interval[0]
+				//1. elems must be updated
+			} else if item[1] > interval[0] && interval[1] > item[1] {
+				item[1] = interval[1]
+			}
+		}
 	}
 
-	for _, inter := range intervals {
-		res += inter[1] - inter[0]
-
+	for _, item := range list {
+		res += item[1] - item[0]
 	}
 	return res
 }
-
-// func SumOfIntervals2(intervals [][2]int) int {
-// 	arr := [][2]int{}
-// 	res := 0
-
-// 	for _, inter := range intervals {
-// 		print(inter[0], inter[1])
-// 		if len(arr) == 0 {
-// 			arr = append(arr, inter)
-// 		}
-
-// 	}
-
-// 	return res
-// }
