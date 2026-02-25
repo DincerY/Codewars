@@ -1,5 +1,9 @@
 package main
 
+import (
+	"sort"
+)
+
 func main() {
 	SumOfIntervals([][2]int{{1, 5}, {10, 20}, {1, 6}, {16, 19}, {5, 11}})
 	SumOfIntervals([][2]int{{1, 4}, {7, 10}, {3, 5}})
@@ -11,26 +15,33 @@ func main() {
 }
 
 func SumOfIntervals(intervals [][2]int) int {
-	res := 0
-	list := [][2]int{}
-	for _, interval := range intervals {
-		if len(list) == 0 {
-			list = append(list, interval)
-			continue
-		}
-		for _, item := range list {
-			//0. elems must be updated
-			if interval[0] < item[0] {
-				item[0] = interval[0]
-				//1. elems must be updated
-			} else if item[1] > interval[0] && interval[1] > item[1] {
-				item[1] = interval[1]
-			}
-		}
+	if len(intervals) == 0 {
+		return 0
 	}
 
-	for _, item := range list {
-		res += item[1] - item[0]
+	sort.Slice(intervals, func(i, j int) bool {
+		return intervals[i][0] < intervals[j][0]
+	})
+
+	totalLength := 0
+	currentStart := intervals[0][0]
+	currentEnd := intervals[0][1]
+
+	for i := 1; i < len(intervals); i++ {
+		nextStart := intervals[i][0]
+		nextEnd := intervals[i][1]
+
+		if nextStart < currentEnd {
+			if nextEnd > currentEnd {
+				currentEnd = nextEnd
+			}
+		} else {
+			totalLength += currentEnd - currentStart
+
+			currentStart = nextStart
+			currentEnd = nextEnd
+		}
 	}
-	return res
+	totalLength += currentEnd - currentStart
+	return totalLength
 }
