@@ -1,6 +1,8 @@
 package main
 
-import "strings"
+import (
+	"strings"
+)
 
 func main() {
 
@@ -32,18 +34,19 @@ func FirstNonRepeating(str string) string {
 	for i, rn := range lowerStr {
 		test := list[rn]
 		if test[0] == 0 && test[1] == 0 {
-			test[0] = i
-			test[1] = 1
+			test[0] = 1
+			test[1] = i
 		} else {
-			test[1]++
+			test[0]++
 		}
 		list[rn] = test
 	}
+	minIndex := len(str)
 	for _, lst := range list {
-		if lst[0] == 1 {
+		if lst[1] < minIndex && lst[0] == 1 {
+			minIndex = lst[1]
 			res = string(str[lst[1]])
 		}
 	}
-
 	return res
 }
