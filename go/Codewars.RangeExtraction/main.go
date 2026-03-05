@@ -7,11 +7,12 @@ func main() {
 }
 
 func Solution(list []int) string {
+	res := ""
 	for _, val := range list {
 
 	}
 
 	test := strconv.Itoa(-1)
 	print(test)
-	return ""
+	return res
 }
