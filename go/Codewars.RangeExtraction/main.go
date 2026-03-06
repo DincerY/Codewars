@@ -8,11 +8,33 @@ func main() {
 
 func Solution(list []int) string {
 	res := ""
-	for _, val := range list {
+	first := list[0]
+	last := list[0]
+	for i := 1; i < len(list); i++ {
+		if last == list[i]-1 {
+			last = list[i]
+		} else {
+			if last-first >= 2 {
+				res += strconv.Itoa(first) + "-" + strconv.Itoa(last)
+			} else if last-first == 1 {
+				res += strconv.Itoa(first) + "," + strconv.Itoa(last)
+			} else {
+				res += strconv.Itoa(first)
+			}
 
+			res += ","
+			first = list[i]
+			last = list[i]
+
+		}
+	}
+	if last-first >= 2 {
+		res += strconv.Itoa(first) + "-" + strconv.Itoa(last)
+	} else if last-first == 1 {
+		res += strconv.Itoa(first) + "," + strconv.Itoa(last)
+	} else {
+		res += strconv.Itoa(first)
 	}
 
-	test := strconv.Itoa(-1)
-	print(test)
 	return res
 }
