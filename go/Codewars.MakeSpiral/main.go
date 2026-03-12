@@ -13,23 +13,23 @@ func Spiralize(size int) [][]int {
 	left, top := 0, 0
 	right, bottom := size-1, size-1
 	for left <= right && top <= bottom {
-		for i := 0; i < right; i++ {
+		for i := left; i <= right; i++ {
 			res[top][i] = 1
 		}
-		top += 2
-		for i := 0; i < bottom; i++ {
+		for i := top; i <= bottom; i++ {
 			res[i][right] = 1
 		}
-		right -= 2
-		for i := right; i > left; i-- {
+		top += 2
+		for i := right; i >= left; i-- {
 			res[bottom][i] = 1
 		}
-		bottom -= 2
-		for i := bottom; i > top; i-- {
+		right -= 2
+		for i := bottom; i >= top; i-- {
 			res[i][left] = 1
 		}
+		bottom -= 2
 		left += 2
 	}
 
-	return [][]int{}
+	return res
 }
