@@ -2,6 +2,8 @@ package main
 
 func main() {
 	Spiralize(5)
+	Spiralize(8)
+
 	Spiralize(10)
 }
 
@@ -13,6 +15,9 @@ func Spiralize(size int) [][]int {
 	left, top := 0, 0
 	right, bottom := size-1, size-1
 	for left <= right && top <= bottom {
+		if left > 0 {
+			res[top][left-1] = 1
+		}
 		for i := left; i <= right; i++ {
 			res[top][i] = 1
 		}
@@ -30,6 +35,5 @@ func Spiralize(size int) [][]int {
 		bottom -= 2
 		left += 2
 	}
-
 	return res
 }
