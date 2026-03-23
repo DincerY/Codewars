@@ -9,14 +9,23 @@ func main() {
 }
 
 func LastDigit(as []int) int {
+
 	floatAs := []float64{}
 
 	for _, val := range as {
 		floatAs = append(floatAs, float64(val))
 	}
 
-	for i := len(floatAs) - 2; i >= 0; i-- {
+	for i := len(floatAs) - 2; i > 0; i-- {
 		floatAs[i] = math.Pow(floatAs[i], floatAs[i+1])
+	}
+	power := floatAs[1]
+	val := floatAs[0]
+	lastDigit := val
+
+	for i := 0; i < int(power); i++ {
+		lastDigit = (lastDigit * val) % 10
+
 	}
 	return int(floatAs[0]) % 10
 }
