@@ -17,7 +17,6 @@ func main() {
 
 }
 
-// hızlı modüler üs alma
 func modPow(base, exp, mod int) int {
 	result := 1
 	base %= mod
@@ -33,26 +32,27 @@ func modPow(base, exp, mod int) int {
 }
 
 func LastDigit(arr []int) int {
-	// boş liste
 	if len(arr) == 0 {
 		return 1
 	}
 
-	// sağdan sola hesapla
 	exp := 1
 
-	for i := len(arr) - 1; i >= 0; i-- {
+	for i := len(arr) - 1; i >= 1; i-- {
 		base := arr[i]
 
-		// exponent'ı küçült (cycle için)
-		if exp >= 4 {
-			exp = exp%4 + 4
+		if exp == 0 {
+			exp = 1
 		}
 
-		exp = modPow(base, exp, 10)
+		exp = modPow(base, exp, 4)
+
+		if exp == 0 {
+			exp = 4
+		}
 	}
 
-	return exp % 10
+	return modPow(arr[0], exp, 10)
 }
 
 func LastDigit2(as []int) int {
