@@ -3,11 +3,13 @@ package main
 import "math"
 
 func main() {
+	LastDigit([]int{937640, 767456, 981242})
+
 	LastDigit([]int{})
 	LastDigit([]int{0, 0})
 	LastDigit([]int{0, 0, 0})
 	LastDigit([]int{1, 2})
-	LastDigit([]int{3, 4, 5}) //1
+	LastDigit([]int{3, 4, 5})
 	LastDigit([]int{4, 3, 6})
 
 	LastDigit([]int{3, 4, 2})
@@ -15,7 +17,45 @@ func main() {
 
 }
 
-func LastDigit(as []int) int {
+// hızlı modüler üs alma
+func modPow(base, exp, mod int) int {
+	result := 1
+	base %= mod
+
+	for exp > 0 {
+		if exp%2 == 1 {
+			result = (result * base) % mod
+		}
+		base = (base * base) % mod
+		exp /= 2
+	}
+	return result
+}
+
+func LastDigit(arr []int) int {
+	// boş liste
+	if len(arr) == 0 {
+		return 1
+	}
+
+	// sağdan sola hesapla
+	exp := 1
+
+	for i := len(arr) - 1; i >= 0; i-- {
+		base := arr[i]
+
+		// exponent'ı küçült (cycle için)
+		if exp >= 4 {
+			exp = exp%4 + 4
+		}
+
+		exp = modPow(base, exp, 10)
+	}
+
+	return exp % 10
+}
+
+func LastDigit2(as []int) int {
 	if len(as) == 0 {
 		return 1
 	}
@@ -40,7 +80,7 @@ func LastDigit(as []int) int {
 		return 1
 	}
 
-	for i := 0; i < power; i++ {
+	for i := 0; i < power-1; i++ {
 		lastDigit = (lastDigit * val) % 10
 
 	}
