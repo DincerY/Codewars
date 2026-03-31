@@ -54,7 +54,6 @@ func modFor(i int) int {
 	}
 }
 
-// LastDigit, kuvvet kulesinin son basamağını hesaplar
 func LastDigit(as []int) int {
 	n := len(as)
 
