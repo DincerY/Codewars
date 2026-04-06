@@ -5,6 +5,8 @@ import (
 )
 
 func main() {
+	DblLinear(1000)
+
 	DblLinear(10)
 	DblLinear(50)
 	DblLinear(100)
@@ -15,29 +17,23 @@ func main() {
 func DblLinear(n int) int {
 	res := []int{1}
 	dic := make(map[int]struct{})
-	dic[1] = struct{}{}
+	max := 0
 
-	for true {
+	for len(dic) != n+1 {
 		i := res[0]
 		res = res[1:]
+		if _, exists := dic[i]; exists {
+			continue
+		}
 		res = append(res, (i*2)+1)
 		res = append(res, (i*3)+1)
 		sort.Ints(res)
 
-		if _, exists := dic[i]; exists {
-			continue
-		}
-		if len(dic) == n+1 {
-			break
-		}
 		dic[i] = struct{}{}
-	}
-	max := 0
-
-	for k := range dic {
-		if k > max {
-			max = k
+		if i > max {
+			max = i
 		}
 	}
+
 	return max
 }
