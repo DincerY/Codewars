@@ -1,9 +1,5 @@
 package main
 
-import (
-	"sort"
-)
-
 func main() {
 	DblLinear(1000)
 
@@ -13,27 +9,27 @@ func main() {
 
 }
 
-// It worked but we got timed out error
 func DblLinear(n int) int {
-	res := []int{1}
-	dic := make(map[int]struct{})
-	max := 0
+	res := make([]int, n+1)
+	res[0] = 1
 
-	for len(dic) != n+1 {
-		i := res[0]
-		res = res[1:]
-		if _, exists := dic[i]; exists {
-			continue
-		}
-		res = append(res, (i*2)+1)
-		res = append(res, (i*3)+1)
-		sort.Ints(res)
+	i, j := 0, 0
 
-		dic[i] = struct{}{}
-		if i > max {
-			max = i
+	for k := 1; k <= n; k++ {
+		twoRes := 2*res[i] + 1
+		threeRes := 3*res[j] + 1
+
+		if twoRes < threeRes {
+			res[k] = twoRes
+			i++
+		} else if twoRes > threeRes {
+			res[k] = threeRes
+			j++
+		} else {
+			res[k] = threeRes
+			i++
+			j++
 		}
 	}
-
-	return max
+	return res[n]
 }
