@@ -1,9 +1,9 @@
 package main
 
 func main() {
-	MaximumSubarraySum([]int{-2, -1, -3, -4, -1, -2, -1, -5, -4})
+	//MaximumSubarraySum2([]int{-2, -1, -3, -4, -1, -2, -1, -5, -4})
 
-	MaximumSubarraySum([]int{-2, 1, -3, 4, -1, 2, 1, -5, 4})
+	MaximumSubarraySum2([]int{-2, 1, -3, 4, -1, 2, 1, -5, 4})
 	MaximumSubarraySum([]int{1, 2, 3, 4, 5})
 
 }
@@ -32,4 +32,14 @@ func MaximumSubarraySum(numbers []int) int {
 	} else {
 		return res
 	}
+}
+
+func MaximumSubarraySum2(numbers []int) int {
+	res, sum := 0, 0
+	for i := 0; i < len(numbers); i++ {
+		sum += numbers[i]
+		res = max(res, sum)
+		sum = max(sum, 0)
+	}
+	return res
 }
