@@ -1,21 +1,11 @@
 package main
 
 import (
-	"fmt"
+	"math"
 	"math/big"
-	"time"
 )
 
 func main() {
-	startRec := time.Now()
-	res := recursiondp(50)
-	durationRec := time.Since(startRec)
-	fmt.Printf("DP Sonuç: %d | Süre: %v\n", res, durationRec)
-
-	startRec = time.Now()
-	res = recursion(50)
-	durationRec = time.Since(startRec)
-	fmt.Printf("Recursive Sonuç: %d | Süre: %v\n", res, durationRec)
 	fib(1)
 	fib(2)
 	fib(3)
@@ -23,21 +13,18 @@ func main() {
 	fib(50)
 }
 
-var memo = make(map[int]int)
-
 func fib(n int64) *big.Int {
-	return big.NewInt(n)
-}
-
-func recursion(n int) int {
-	if n <= 1 {
-		return n
+	if n < 0 {
+		n = int64(math.Abs(float64(n)))
 	}
-	return recursion(n-1) +
-		recursion(n-2)
+	res := recursiondp(n)
+
+	return big.NewInt(res)
 }
 
-func recursiondp(n int) int {
+var memo = make(map[int64]int64)
+
+func recursiondp(n int64) int64 {
 	if val, ok := memo[n]; ok {
 		return val
 	}
